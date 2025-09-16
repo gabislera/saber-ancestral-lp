@@ -24,7 +24,7 @@ export const Contact = () => {
 
 		const phoneNumber = "5551996682408";
 
-		const whatsappMessage = `Olá, meu nome é ${formData.name} e gostaria marcar mais informaçoes sobre ${formData.service}.`;
+		const whatsappMessage = `Olá, meu nome é ${formData.name} e gostaria de mais informaçoes sobre ${formData.service}.`;
 
 		const encodedMessage = encodeURIComponent(whatsappMessage);
 
