@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import type { Swiper as SwiperType } from "swiper";
 
-const images = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 16, 17, 18];
+const images = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 16, 17];
 
 export const ImageGallery = () => {
 	const swiperRef = useRef<SwiperType | null>(null);
