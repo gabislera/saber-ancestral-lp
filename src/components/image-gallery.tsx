@@ -48,7 +48,7 @@ export const ImageGallery = () => {
 							className="rounded-xl overflow-hidden hover:shadow-lg "
 						>
 							<img
-								src={`/src/assets/images/saber-${item}.jpg`}
+								src={`/saber-${item}.jpg`}
 								alt={`Galeria ${item}`}
 								className="w-full h-full object-cover"
 								draggable={false}
