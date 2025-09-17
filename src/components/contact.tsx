@@ -120,21 +120,24 @@ export const Contact = () => {
 								required
 							>
 								<option value="">Selecione o tipo de atendimento</option>
-								<option value="Constelação Individual">
-									Constelação Individual
-								</option>
-								<option value="Constelação em Grupo">
-									Constelação em Grupo
-								</option>
-								<option value="Constelação Organizacional">
-									Constelação Organizacional
-								</option>
+								<option value="Terapia Sistêmica">Terapia Sistêmica</option>
 								<option value="Reiki">Reiki</option>
-								<option value="Florais de Bach">Florais de Bach</option>
-								<option value="Leitura de Arquétipos">
-									Leitura de Arquétipos
-								</option>
+								<option value="Terapia de florais">Terapia de florais</option>
 								<option value="Terapia Integrativa">Terapia Integrativa</option>
+								<option value="Regressão Terapêutica">
+									Regressão Terapêutica
+								</option>
+								<option value="Cone Hindu">Cone Hindu</option>
+								<option value="Dança Circular Terapêutica">
+									Dança Circular Terapêutica
+								</option>
+								<option value="Vivências Ancestrais">
+									Vivências Ancestrais
+								</option>
+								<option value="Meditações e Rituais de Cura">
+									Meditações e Rituais de Cura
+								</option>
+								<option value="Estudos Sistêmicos">Estudos Sistêmicos</option>
 							</select>
 						</div>
 						<button

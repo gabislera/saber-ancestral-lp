@@ -1,5 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import logo from "../../public/logo.png";
+import logo2 from "../../public/logo-rounded.png";
 
 export const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,16 +19,17 @@ export const Header = () => {
 			<div className="container mx-auto px-4 py-3">
 				<div className="flex items-center justify-between">
 					<div className="flex items-center space-x-3">
-						{/* <img
-							src="/logo-saber-ancestral.png"
+						<img
+							src={logo2}
 							alt="Saber Ancestral"
-							width={50}
-							height={50}
-							className="rounded-full"
-						/> */}
-						<span className="text-xl font-light text-slate-800 tracking-wide">
-							Saber Ancestral
-						</span>
+							// width={50}
+							// height={50}
+							className="w-[50px]"
+						/>
+						<div className="flex flex-col text-xl font-light text-slate-800 tracking-wide leading-5 font-poiret">
+							<span className="">SABER</span>
+							<span className="">ANCESTRAL</span>
+						</div>
 					</div>
 
 					{/* Desktop Menu */}

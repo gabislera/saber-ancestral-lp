@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-poiret: "Poiret One", cursive;
+  --font-montserrat: "Montserrat", sans-serif;
+}
