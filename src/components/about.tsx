@@ -1,4 +1,4 @@
-import banner from "../../public/saber-25.jpg";
+import banner from "../../public/saber-25.webp";
 
 export const About = () => {
 	return (

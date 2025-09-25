@@ -1,7 +1,7 @@
 import { Building2, User, Users } from "lucide-react";
-import image1 from "../../public/saber-8.jpg";
-import image2 from "../../public/saber-19.jpg";
-import image3 from "../../public/saber-20.jpg";
+import image1 from "../../public/saber-8.webp";
+import image2 from "../../public/saber-19.webp";
+import image3 from "../../public/saber-20.webp";
 
 export const MainService = () => {
 	return (

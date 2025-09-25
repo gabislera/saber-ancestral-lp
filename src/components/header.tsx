@@ -21,8 +21,8 @@ export const Header = () => {
 						<img
 							src={logo2}
 							alt="Saber Ancestral"
-							// width={50}
-							// height={50}
+							width={50}
+							height={50}
 							className="w-[50px]"
 						/>
 						<div className="flex flex-col text-xl font-light text-slate-800 tracking-wide leading-5 font-poiret">
@@ -46,7 +46,7 @@ export const Header = () => {
 								type="button"
 								key={item}
 								onClick={() => scrollToSection(item)}
-								className="text-slate-600 hover:text-orange-500 transition-colors duration-300 capitalize font-light tracking-wide"
+								className="text-slate-600 hover:text-orange-500 transition-colors duration-300 capitalize font-light tracking-wide focus:outline-none"
 							>
 								{item === "constelacao"
 									? "Constelação"
@@ -60,7 +60,7 @@ export const Header = () => {
 					{/* Mobile Menu Button */}
 					<button
 						type="button"
-						className="md:hidden p-2"
+						className="md:hidden p-2 focus:outline-none"
 						onClick={() => setIsMenuOpen(!isMenuOpen)}
 					>
 						{isMenuOpen ? (
@@ -88,7 +88,7 @@ export const Header = () => {
 									type="button"
 									key={item}
 									onClick={() => scrollToSection(item)}
-									className="text-slate-600 hover:text-orange-500 transition-colors duration-300 capitalize font-light tracking-wide text-left"
+									className="text-slate-600 hover:text-orange-500 transition-colors duration-300 capitalize font-light tracking-wide text-left focus:outline-none"
 								>
 									{item === "constelacao"
 										? "Constelação"

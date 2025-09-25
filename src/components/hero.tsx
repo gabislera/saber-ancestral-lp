@@ -30,7 +30,7 @@ export const Hero = () => {
 
 					<button
 						type="button"
-						className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 rounded-full font-light text-lg tracking-wide transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-block cursor-pointer"
+						className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 rounded-full font-light text-lg tracking-wide transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-block cursor-pointer focus:outline-none"
 						onClick={(e) => {
 							e.preventDefault();
 							const section = document.getElementById("contact");

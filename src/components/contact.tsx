@@ -22,7 +22,7 @@ export const Contact = () => {
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const phoneNumber = "5551996682408";
+		const phoneNumber = "5551996548555";
 
 		const whatsappMessage = `Olá, meu nome é ${formData.name} e gostaria de mais informaçoes sobre ${formData.service}.`;
 
@@ -81,7 +81,7 @@ export const Contact = () => {
 									value={formData.phone}
 									onChange={handleChange}
 									className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:border-orange-500 transition-colors duration-300"
-									placeholder="(11) 99999-9999"
+									placeholder="(51) 99999-9999"
 									required
 								/>
 							</div>
@@ -142,7 +142,7 @@ export const Contact = () => {
 						</div>
 						<button
 							type="submit"
-							className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-4 rounded-xl font-light tracking-wide transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
+							className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-4 rounded-xl font-light tracking-wide transition-all duration-300 shadow-lg hover:shadow-xl text-lg focus:outline-none"
 						>
 							Enviar Mensagem
 						</button>

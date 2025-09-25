@@ -29,10 +29,10 @@ export const AddressMap = () => {
 											WhatsApp:
 										</span>
 										<a
-											href="https://wa.me/5551999999999"
+											href="https://wa.me/5551996548555"
 											className="text-orange-500 hover:text-orange-600 transition-colors duration-300 text-sm"
 										>
-											(51) 99999-9999
+											(51) 99654-8555
 										</a>
 									</div>
 								</div>
@@ -46,10 +46,10 @@ export const AddressMap = () => {
 											Instagram:
 										</span>
 										<a
-											href="https://instagram.com/saberancestral"
+											href="https://instagram.com/saber.ancestral_"
 											className="text-orange-500 hover:text-orange-600 transition-colors duration-300 text-sm"
 										>
-											@saberancestral
+											@saber.ancestral_
 										</a>
 									</div>
 								</div>
@@ -64,10 +64,10 @@ export const AddressMap = () => {
 										</span>
 
 										<a
-											href="mailto:contato@saberancestral.com"
+											href="mailto:saberancestralscs@gmail.com"
 											className="text-orange-500 hover:text-orange-600 transition-colors duration-300 text-sm"
 										>
-											contato@saberancestral.com.br
+											saberancestralscs@gmail.com
 										</a>
 									</div>
 								</div>
