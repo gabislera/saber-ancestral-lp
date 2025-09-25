@@ -1,30 +1,60 @@
-import { type ChangeEvent, type FormEvent, useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+const contactSchema = z.object({
+	name: z
+		.string()
+		.min(1, "Nome é obrigatório")
+		.min(2, "Nome deve ter pelo menos 2 caracteres")
+		.max(100, "Nome não pode ter mais de 100 caracteres")
+		.regex(/^[a-zA-ZÀ-ÿ\s]+$/, "Nome deve conter apenas letras e espaços"),
+	phone: z
+		.string()
+		.optional()
+		.or(z.literal(""))
+		.refine(
+			(val) => {
+				if (!val || val === "") return true;
+				return /^(\(\d{2}\)\s?\d{4,5}-?\d{4}|\d{2}\s?\d{4,5}-?\d{4}|\d{10,11})$/.test(
+					val,
+				);
+			},
+			{
+				message: "Formato de telefone inválido. Use (XX) XXXXX-XXXX ou similar",
+			},
+		),
+	email: z
+		.string()
+		.optional()
+		.or(z.literal(""))
+		.refine(
+			(val) => {
+				if (!val || val === "") return true;
+				return z.string().email().safeParse(val).success;
+			},
+			{ message: "E-mail deve ter um formato válido" },
+		),
+	service: z.string().min(1, "Selecione um tipo de atendimento"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export const Contact = () => {
-	const [formData, setFormData] = useState({
-		name: "",
-		phone: "",
-		email: "",
-		service: "",
-		message: "",
+	const {
+		register,
+		handleSubmit,
+		formState: { errors, isSubmitting },
+		reset,
+	} = useForm<ContactFormData>({
+		resolver: zodResolver(contactSchema),
+		mode: "onBlur",
 	});
 
-	const handleChange = (
-		e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-	) => {
-		const { name, value } = e.target;
-		setFormData((prev) => ({
-			...prev,
-			[name]: value,
-		}));
-	};
-
-	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-
+	const onSubmit = (data: ContactFormData) => {
 		const phoneNumber = "5551996548555";
 
-		const whatsappMessage = `Olá, meu nome é ${formData.name} e gostaria de mais informaçoes sobre ${formData.service}.`;
+		const whatsappMessage = `Olá, meu nome é ${data.name} e gostaria de mais informações sobre ${data.service}.`;
 
 		const encodedMessage = encodeURIComponent(whatsappMessage);
 
@@ -32,6 +62,8 @@ export const Contact = () => {
 			`https://wa.me/${phoneNumber}?text=${encodedMessage}`,
 			"_blank",
 		);
+
+		reset();
 	};
 
 	return (
@@ -47,7 +79,7 @@ export const Contact = () => {
 				</div>
 
 				<div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 shadow-lg max-w-2xl mx-auto">
-					<form className="space-y-6" onSubmit={handleSubmit}>
+					<form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
 						<div className="grid md:grid-cols-2 gap-6">
 							<div>
 								<label
@@ -59,31 +91,43 @@ export const Contact = () => {
 								<input
 									type="text"
 									id="name"
-									name="name"
-									value={formData.name}
-									onChange={handleChange}
-									className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:border-orange-500 transition-colors duration-300"
+									{...register("name")}
+									className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-colors duration-300 ${
+										errors.name
+											? "border-red-500 focus:border-red-500"
+											: "border-slate-200 focus:border-orange-500"
+									}`}
 									placeholder="Seu nome completo"
-									required
 								/>
+								{errors.name && (
+									<p className="text-red-500 text-sm mt-1 font-light">
+										{errors.name.message}
+									</p>
+								)}
 							</div>
 							<div>
 								<label
 									htmlFor="phone"
 									className="block text-slate-700 font-light mb-2 tracking-wide"
 								>
-									Telefone
+									Telefone <span className="text-slate-400">(opcional)</span>
 								</label>
 								<input
 									type="tel"
 									id="phone"
-									name="phone"
-									value={formData.phone}
-									onChange={handleChange}
-									className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:border-orange-500 transition-colors duration-300"
+									{...register("phone")}
+									className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-colors duration-300 ${
+										errors.phone
+											? "border-red-500 focus:border-red-500"
+											: "border-slate-200 focus:border-orange-500"
+									}`}
 									placeholder="(51) 99999-9999"
-									required
 								/>
+								{errors.phone && (
+									<p className="text-red-500 text-sm mt-1 font-light">
+										{errors.phone.message}
+									</p>
+								)}
 							</div>
 						</div>
 						<div>
@@ -91,18 +135,24 @@ export const Contact = () => {
 								htmlFor="email"
 								className="block text-slate-700 font-light mb-2 tracking-wide"
 							>
-								E-mail
+								E-mail <span className="text-slate-400">(opcional)</span>
 							</label>
 							<input
 								type="email"
 								id="email"
-								name="email"
-								value={formData.email}
-								onChange={handleChange}
-								className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:border-orange-500 transition-colors duration-300"
+								{...register("email")}
+								className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-colors duration-300 ${
+									errors.email
+										? "border-red-500 focus:border-red-500"
+										: "border-slate-200 focus:border-orange-500"
+								}`}
 								placeholder="seu@email.com"
-								required
 							/>
+							{errors.email && (
+								<p className="text-red-500 text-sm mt-1 font-light">
+									{errors.email.message}
+								</p>
+							)}
 						</div>
 						<div>
 							<label
@@ -113,11 +163,12 @@ export const Contact = () => {
 							</label>
 							<select
 								id="service"
-								name="service"
-								value={formData.service}
-								onChange={handleChange}
-								className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:border-orange-500 transition-colors duration-300"
-								required
+								{...register("service")}
+								className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-colors duration-300 ${
+									errors.service
+										? "border-red-500 focus:border-red-500"
+										: "border-slate-200 focus:border-orange-500"
+								}`}
 							>
 								<option value="">Selecione o tipo de atendimento</option>
 								<option value="Terapia Sistêmica">Terapia Sistêmica</option>
@@ -139,12 +190,22 @@ export const Contact = () => {
 								</option>
 								<option value="Estudos Sistêmicos">Estudos Sistêmicos</option>
 							</select>
+							{errors.service && (
+								<p className="text-red-500 text-sm mt-1 font-light">
+									{errors.service.message}
+								</p>
+							)}
 						</div>
 						<button
 							type="submit"
-							className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-4 rounded-xl font-light tracking-wide transition-all duration-300 shadow-lg hover:shadow-xl text-lg focus:outline-none"
+							disabled={isSubmitting}
+							className={`w-full py-4 rounded-xl font-light tracking-wide transition-all duration-300 shadow-lg text-lg focus:outline-none ${
+								isSubmitting
+									? "bg-gray-400 cursor-not-allowed"
+									: "bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 hover:shadow-xl text-white"
+							}`}
 						>
-							Enviar Mensagem
+							{isSubmitting ? "Enviando..." : "Enviar Mensagem"}
 						</button>
 					</form>
 				</div>
