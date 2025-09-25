@@ -1,5 +1,3 @@
-import banner from "../../public/saber-25.webp";
-
 export const About = () => {
 	return (
 		<section id="sobre" className="py-16 px-4 bg-white">
@@ -24,7 +22,7 @@ export const About = () => {
 					</div>
 					<div className="bg-gradient-to-br from-orange-100 to-slate-100 overflow-hidden rounded-2xl flex items-center justify-center aspect-[4/3] w-full">
 						<img
-							src={banner}
+							src="/saber-25.webp"
 							alt="Espaço Saber Ancestral"
 							width={400}
 							height={300}

@@ -1,6 +1,5 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import logo2 from "../../public/logo-rounded.png";
 
 export const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +18,7 @@ export const Header = () => {
 				<div className="flex items-center justify-between">
 					<div className="flex items-center space-x-3">
 						<img
-							src={logo2}
+							src="/logo-rounded.png"
 							alt="Saber Ancestral"
 							width={50}
 							height={50}

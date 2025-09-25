@@ -1,7 +1,4 @@
 import { Building2, User, Users } from "lucide-react";
-import image1 from "../../public/saber-8.webp";
-import image2 from "../../public/saber-19.webp";
-import image3 from "../../public/saber-20.webp";
 
 export const MainService = () => {
 	return (
@@ -26,7 +23,7 @@ export const MainService = () => {
 					<div className="relative">
 						<div className="aspect-[4/3] bg-gradient-to-br from-orange-100 to-slate-100 rounded-2xl overflow-hidden shadow-lg">
 							<img
-								src={image1}
+								src="/saber-8.webp"
 								alt="Constelação Individual"
 								width={500}
 								height={400}
@@ -89,7 +86,7 @@ export const MainService = () => {
 					<div className="relative order-1 md:order-2">
 						<div className="aspect-[4/3] bg-gradient-to-br from-orange-100 to-slate-100 rounded-2xl overflow-hidden shadow-lg">
 							<img
-								src={image2}
+								src="/saber-19.webp"
 								alt="Constelação em Grupo"
 								width={500}
 								height={400}
@@ -104,7 +101,7 @@ export const MainService = () => {
 					<div className="relative">
 						<div className="aspect-[4/3] bg-gradient-to-br from-orange-100 to-slate-100 rounded-2xl overflow-hidden shadow-lg">
 							<img
-								src={image3}
+								src="/saber-20.webp"
 								alt="Constelação Organizacional"
 								width={500}
 								height={400}
